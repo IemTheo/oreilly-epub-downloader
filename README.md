@@ -1,5 +1,8 @@
 # O'Reilly EPUB Downloader
 
+![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)
+![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)
+
 A CLI to download O'Reilly books as EPUB for offline reading. Uses cookie-based authentication to access your subscription content and generates clean EPUBs with images, cover art, and proper chapter structure.
 
 ## Installation
