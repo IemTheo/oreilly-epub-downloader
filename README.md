@@ -36,6 +36,10 @@ oreilly-dl "https://learning.oreilly.com/library/view/ai-engineering/97810981662
 oreilly-dl 9781098166298 -c cookies.json -o "My Book.epub"
 ```
 
+Example output:
+
+![Example output](assets/example.png)
+
 Books are saved to `./downloads/` by default.
 
 ## Finding Book IDs
