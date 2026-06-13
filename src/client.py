@@ -114,18 +114,25 @@ class OreillyClient:
 
         # Use the chapters API endpoint
         chapters_url = f"{API_BASE}epub-chapters/?epub_identifier=urn:orm:book:{book_id}"
-        human_delay(500, 1000)
+        all_results = []
 
-        response = self.http.get(chapters_url)
-        if response.status_code != 200:
-            console.print(f"[yellow]Chapters API returned {response.status_code}, trying fallback...[/]")
-            return self._get_chapters_fallback(book_id)
+        while chapters_url:
+            human_delay(500, 1000)
 
-        data = response.json()
-        results = data.get("results", data) if isinstance(data, dict) else data
+            response = self.http.get(chapters_url)
+            if response.status_code != 200:
+                console.print(f"[yellow]Chapters API returned {response.status_code}, trying fallback...[/]")
+                return self._get_chapters_fallback(book_id)
+
+            data = response.json()
+            results = data.get("results", data) if isinstance(data, dict) else data
+            all_results.extend(results)
+
+            # Follow data.get("next") to get the next chapter
+            chapters_url = data.get("next") if isinstance(data, dict) else None
 
         chapters = []
-        for i, item in enumerate(results):
+        for i, item in enumerate(all_results):
             title = item.get("title", f"Chapter {i + 1}")
             content_url = item.get("content_url", "")
             chapter_id = item.get("ourn", "").split(":")[-1].replace(".html", "") or f"ch{i}"
