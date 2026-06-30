@@ -27,10 +27,12 @@ pip install -e .
 
 ```bash
 # By book ID
-oreilly-dl 9781098166298 -c cookies.json
+oreilly-dl 9781098167813 -c cookies.json
 
 # By URL
-oreilly-dl "https://learning.oreilly.com/library/view/ai-engineering/9781098166298/" -c cookies.json
+oreilly-dl "https://learning.oreilly.com/library/view/ai-engineering/9781098167813/" -c cookies.json
+
+# oreilly-dl https://learning.oreilly.com/library/view/azure-fundamentals-az-900/9781098167813/ -c cookies.json
 
 # Custom output path
 oreilly-dl 9781098166298 -c cookies.json -o "My Book.epub"
@@ -45,7 +47,7 @@ Books are saved to `./downloads/` by default.
 ## Finding Book IDs
 
 The book ID is the number in the O'Reilly URL:
-- URL: `https://learning.oreilly.com/library/view/ai-engineering/9781098166298/`
+- URL: `https://learning.oreilly.com/library/view/ai-engineering/9781098167813/`
 - Book ID: `9781098166298`
 
 ## Refreshing Cookies
